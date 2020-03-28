@@ -19,4 +19,5 @@ vim +PluginInstall +qall
 cd ~/.vim/bundle/YouCompleteMe
 python3 install.py --clang-completer
 
+git config --global core.autocrlf input
 cd $cur_dir
