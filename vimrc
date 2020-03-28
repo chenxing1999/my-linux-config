@@ -17,6 +17,8 @@ Plugin 'rstacruz/sparkup', {'rtp': 'vim/'}
 Plugin 'ascenator/L9', {'name': 'newL9'}
 Plugin 'JamshedVesuna/vim-markdown-preview'
 Plugin 'nvie/vim-flake8'
+Plugin 'tomasiser/vim-code-dark'
+
 
 call vundle#end()            " required
 filetype plugin indent on    " required
@@ -110,3 +112,5 @@ set encoding=utf-8
 " set relativenumber
 
 set nobackup
+
+colorscheme codedark
