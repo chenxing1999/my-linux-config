@@ -114,3 +114,4 @@ set encoding=utf-8
 set nobackup
 
 colorscheme codedark
+set expandtab
