@@ -17,7 +17,10 @@ Plugin 'rstacruz/sparkup', {'rtp': 'vim/'}
 Plugin 'ascenator/L9', {'name': 'newL9'}
 Plugin 'JamshedVesuna/vim-markdown-preview'
 Plugin 'nvie/vim-flake8'
+
+" My Plugin list
 Plugin 'tomasiser/vim-code-dark'
+Plugin 'psf/black'
 
 
 call vundle#end()            " required
@@ -64,6 +67,11 @@ let g:netrw_liststyle = 3
 let g:netrw_browse_split = 4
 let g:netrw_altv = 1
 let g:netrw_winsize = 20
+
+" Auto Black
+let g:black_linelength = 80
+autocmd BufWritePre *.py execute ':Black'
+
 
 let vim_markdown_preview_github=1
 let vim_markdown_preview_toggle=1
