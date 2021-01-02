@@ -70,7 +70,6 @@ let g:netrw_winsize = 20
 
 " Auto Black
 let g:black_linelength = 80
-autocmd BufWritePre *.py execute ':Black'
 
 
 let vim_markdown_preview_github=1
