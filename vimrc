@@ -75,6 +75,8 @@ let g:black_linelength = 80
 let vim_markdown_preview_github=1
 let vim_markdown_preview_toggle=1
 
+set wildmenu
+
 augroup ProjectDrawer
   autocmd!
 "  autocmd VimEnter * :Vexplore
@@ -92,6 +94,9 @@ xnoremap <C-y> "+y`]
 xnoremap <C-p> "+P`]
 nnoremap <C-p> "+P
 nnoremap <C-c> gg"+yG``
+
+" Set ee to open Vertical explorer
+nnoremap ee :Vex<CR>
 
 Plugin 'scrooloose/nerdcommenter'
 let g:NERDSpaceDelims = 1
@@ -122,3 +127,21 @@ set nobackup
 
 colorscheme codedark
 set expandtab
+
+
+""" COPY ZOOM IN FUNCTION FROM INTERNET """
+" Zoom / Restore window.
+function! s:ZoomToggle() abort
+    if exists('t:zoomed') && t:zoomed
+        execute t:zoom_winrestcmd
+        let t:zoomed = 0
+    else
+        let t:zoom_winrestcmd = winrestcmd()
+        resize
+        vertical resize
+        let t:zoomed = 1
+    endif
+endfunction
+command! ZoomToggle call s:ZoomToggle()
+nnoremap <C-W>z  :ZoomToggle<CR>
+"""""""""""""""""""""""""""""""""""""""""""
