@@ -13,6 +13,7 @@ cp bash_aliases ~/.bash_aliases
 ln -s $cur_dir/fake_home/vimrc ~/.vimrc
 ln -s $cur_dir/fake_home/ycm_extra_conf.py ~/.ycm_extra_conf
 ln -s $cur_dir/fake_home/tmux.conf ~/.tmux.conf
+ln -s $cur_dir/fake_home/condarc ~/.condarc
 
 echo "Setup Vim, YouCompleteMe"
 git clone https://github.com/VundleVim/Vundle.vim.git ~/.vim/bundle/Vundle.vim
