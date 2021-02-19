@@ -12,14 +12,14 @@ Plugin 'VundleVim/Vundle.vim'
 " The following are examples of different formats supported.
 " Keep Plugin commands between vundle#begin/end.
 " plugin on GitHub repo
-Plugin 'tpope/vim-fugitive'
-Plugin 'rstacruz/sparkup', {'rtp': 'vim/'}
-Plugin 'ascenator/L9', {'name': 'newL9'}
-Plugin 'JamshedVesuna/vim-markdown-preview'
-Plugin 'nvie/vim-flake8'
+" Plugin 'tpope/vim-fugitive'
+" Plugin 'rstacruz/sparkup', {'rtp': 'vim/'}
+" Plugin 'ascenator/L9', {'name': 'newL9'}
+" Plugin 'JamshedVesuna/vim-markdown-preview'
+" Plugin 'nvie/vim-flake8'
 
 " My Plugin list
-Plugin 'tomasiser/vim-code-dark'
+" Plugin 'tomasiser/vim-code-dark'
 Plugin 'psf/black'
 
 
@@ -72,8 +72,8 @@ let g:netrw_winsize = 20
 let g:black_linelength = 80
 
 
-let vim_markdown_preview_github=1
-let vim_markdown_preview_toggle=1
+" let vim_markdown_preview_github=1
+" let vim_markdown_preview_toggle=1
 
 set wildmenu
 
@@ -125,7 +125,7 @@ set encoding=utf-8
 
 set nobackup
 
-colorscheme codedark
+" colorscheme codedark
 set expandtab
 
 

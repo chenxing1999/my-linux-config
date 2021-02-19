@@ -131,30 +131,48 @@ def GetCompilationInfoForFile( filename ):
   return database.GetCompilationInfoForFile( filename )
 
 
-def FlagsForFile( filename, **kwargs ):
+# def FlagsForFile( filename, **kwargs ):
+#   if not database:
+#     return {
+#       'flags': flags,
+#       'include_paths_relative_to_dir': DirectoryOfThisScript()
+#     }
+# 
+#   compilation_info = GetCompilationInfoForFile( filename )
+#   if not compilation_info:
+#     return None
+# 
+#   # Bear in mind that compilation_info.compiler_flags_ does NOT return a
+#   # python list, but a "list-like" StringVec object.
+#   final_flags = list( compilation_info.compiler_flags_ )
+# 
+#   # NOTE: This is just for YouCompleteMe; it's highly likely that your project
+#   # does NOT need to remove the stdlib flag. DO NOT USE THIS IN YOUR
+#   # ycm_extra_conf IF YOU'RE NOT 100% SURE YOU NEED IT.
+#   try:
+#     final_flags.remove( '-stdlib=libc++' )
+#   except ValueError:
+#     pass
+# 
+#   return {
+#     'flags': final_flags,
+#     'include_paths_relative_to_dir': compilation_info.compiler_working_dir_
+#   }
+#
+def Settings( **kwargs ):
   if not database:
     return {
       'flags': flags,
       'include_paths_relative_to_dir': DirectoryOfThisScript()
     }
-
+  filename = kwargs[ 'filename' ]
   compilation_info = GetCompilationInfoForFile( filename )
   if not compilation_info:
     return None
 
   # Bear in mind that compilation_info.compiler_flags_ does NOT return a
   # python list, but a "list-like" StringVec object.
-  final_flags = list( compilation_info.compiler_flags_ )
-
-  # NOTE: This is just for YouCompleteMe; it's highly likely that your project
-  # does NOT need to remove the stdlib flag. DO NOT USE THIS IN YOUR
-  # ycm_extra_conf IF YOU'RE NOT 100% SURE YOU NEED IT.
-  try:
-    final_flags.remove( '-stdlib=libc++' )
-  except ValueError:
-    pass
-
   return {
-    'flags': final_flags,
+    'flags': list( compilation_info.compiler_flags_ ),
     'include_paths_relative_to_dir': compilation_info.compiler_working_dir_
   }
