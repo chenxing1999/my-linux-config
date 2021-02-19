@@ -29,4 +29,9 @@ echo "Set up Git"
 git config --global core.autocrlf input
 git config --global --add alias.root '!pwd'
 
+
+echo "Create config folder"
+ln -sn $cur_dir/fake_home/config/i3/ ~/.config/i3/
+ln -sn $cur_dir/fake_home/config/alacritty/ ~/.config/alacritty/
+
 cd $cur_dir
