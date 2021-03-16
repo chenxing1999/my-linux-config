@@ -21,6 +21,7 @@ Plugin 'VundleVim/Vundle.vim'
 " My Plugin list
 " Plugin 'tomasiser/vim-code-dark'
 Plugin 'psf/black'
+Plugin 'christoomey/vim-tmux-navigator'
 
 
 call vundle#end()            " required
