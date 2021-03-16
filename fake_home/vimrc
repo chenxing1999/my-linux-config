@@ -61,12 +61,6 @@ set completeopt-=preview
 let g:syntastic_java_checkers = []
 let g:EclimFileTypeValidate = 0
 let g:ycm_python_binary_path = 'python3'
-" for sidebar
-let g:netrw_banner = 0
-let g:netrw_liststyle = 3
-let g:netrw_browse_split = 4
-let g:netrw_altv = 1
-let g:netrw_winsize = 20
 
 " Auto Black
 let g:black_linelength = 80
@@ -95,8 +89,14 @@ xnoremap <C-p> "+P`]
 nnoremap <C-p> "+P
 nnoremap <C-c> gg"+yG``
 
-" Set ee to open Vertical explorer
-nnoremap ee :Vex<CR>
+" Set F2 to open Vertical explorer
+nnoremap <F2> :Vex<CR>
+
+" Better windows controls
+nnoremap <C-h> <C-w>h
+nnoremap <C-l> <C-w>l
+nnoremap <C-j> <C-w>j
+nnoremap <C-k> <C-w>k
 
 Plugin 'scrooloose/nerdcommenter'
 let g:NERDSpaceDelims = 1
@@ -145,3 +145,43 @@ endfunction
 command! ZoomToggle call s:ZoomToggle()
 nnoremap <C-W>z  :ZoomToggle<CR>
 """""""""""""""""""""""""""""""""""""""""""
+
+
+""" NETRW CONFIG """
+" Paramter
+let g:netrw_banner = 0
+let g:netrw_liststyle = 3
+let g:netrw_browse_split = 4
+let g:netrw_altv = 1
+let g:netrw_winsize = 20
+" Utils
+function! OpenRight()
+    " Split in new windows
+    :normal o 
+    " Get current file path
+    let g:file_to_open=expand("%:p") 
+    " Remove current windows
+    :q!
+    " Open new screen in below right
+    execute 'vert botright split' g:file_to_open
+endfunction
+
+
+function! OpenBelow()
+    " Split in new windows
+    :normal o 
+    " Get current file path
+    let g:file_to_open=expand("%:p") 
+    " Remove current windows
+    :q!
+    :wincmd w
+    execute  'belowright new' g:file_to_open
+endfunction
+
+" Actually mapping
+augroup NetrwMapping
+    autocmd!
+    autocmd filetype netrw nnoremap <buffer> <C-v> :call OpenRight()<CR>
+    autocmd filetype netrw nnoremap <buffer> <C-s> :call OpenBelow()<CR>
+    autocmd filetype netrw nnoremap <buffer> <C-l> :wincmd l <CR>
+augroup END
