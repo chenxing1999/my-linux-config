@@ -24,9 +24,9 @@ set $right l
 
 set $terminal alacritty
 
-set $laptopScreen eDP-1-0
-set $extraScreen HDMI-A-1-0
-exec --no-startup-id xrandr --output $extraScreen --left-of $laptopScreen --auto
+set $laptopScreen eDP
+set $extraScreen HDMI-A-0
+exec_always --no-startup-id xrandr --output $extraScreen --left-of $laptopScreen 
 
 bindsym ctrl+p exec --no-startup-id python $HOME/.config/i3/scripts/dual_screen.py
 
@@ -35,6 +35,7 @@ workspace 2 output $extraScreen
 workspace 3 output $extraScreen
 workspace 4 output $extraScreen
 workspace 5 output $extraScreen
+
 workspace 6 output $laptopScreen
 workspace 7 output $laptopScreen
 workspace 8 output $laptopScreen
@@ -243,7 +244,29 @@ bindsym mod1+F3 exec --no-startup-id xfce4-appfinder
 for_window [class="Xfce4-appfinder"] floating enable
 
 # screenshot
-bindsym Print exec --no-startup-id scrot '%Y-%m-%d-%s_screenshot_$wx$h.jpg' -e 'mv $f $$(xdg-user-dir PICTURES)'
+# bindsym Print exec --no-startup-id scrot '%Y-%m-%d-%s_screenshot_$wx$h.jpg' -e 'mv $f $$(xdg-user-dir PICTURES)'
+
+# bindsym Print exec --no-startup-id flameshot full -p ~/Pictures/captures/
+# Flame shot config 
+exec --no-startup-id flameshot
+
+bindsym Print mode "$mode_capture"
+set $mode_capture (F)ullscreen | Screen (0-1) | (G)UI
+
+mode "$mode_capture" {
+    bindsym f exec --no-startup-id flameshot full -c, mode "default"
+    bindsym 0 exec --no-startup-id flameshot screen -n 0 -c, mode "default"
+    bindsym 1 exec --no-startup-id flameshot screen -n 1 -c, mode "default"
+    bindsym g exec --no-startup-id flameshot gui, mode "default"
+
+    # back to normal: Enter or Escape
+    bindsym Return mode "default"
+    bindsym Escape mode "default"
+}
+
+
+
+
 # bindsym $mod+Shift+s exec --no-startup-id sleep 0.2 && scrot -d '%Y-%m-%d-%s_screenshot_$wx$h.jpg' -e 'mv $f $$(xdg-user-dir PICTURES)'
 
 bindsym $mod+Shift+Return exec --no-startup-id thunar
@@ -256,7 +279,7 @@ bindsym $mod+Shift+Return exec --no-startup-id thunar
 bar {
     height 25
     workspace_buttons yes
-    font pango:Noto Sans 14
+    font pango:Noto Sans 12
 
     #position top
     position bottom
@@ -353,4 +376,6 @@ client.background       #242424
 ##STOP THEMING WM
 # Thing to make more color
 exec --no-startup-id conky -c $HOME/.config/i3/system-overview
-exec --no-startup-id picom -CG --experimental-backends --backend glx --xrender-sync-fence
+# exec --no-startup-id picom -CG --experimental-backends --backend glx --xrender-sync-fence
+exec --no-startup-id picom -b --config ~/.config/i3/picom.conf
+exec --no-startup-id feh --bg-scale /home/xing/Pictures/wallpapers/art-room-1920×1080.jpg /home/xing/Pictures/wallpapers/streets-1920×1080.jpg 
