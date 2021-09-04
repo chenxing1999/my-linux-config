@@ -21,10 +21,6 @@ vim +PluginInstall +qall
 cd ~/.vim/bundle/YouCompleteMe
 python3 install.py --clang-completer
 
-echo "Setup Black"
-cd ~/.vim/bundle/black
-git checkout origin/stable -b stable
-
 echo "Set up Git"
 git config --global core.autocrlf input
 git config --global --add alias.root '!pwd'
