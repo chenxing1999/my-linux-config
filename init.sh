@@ -29,4 +29,8 @@ echo "Create config folder"
 ln -sn $cur_dir/fake_home/config/i3/ ~/.config/i3/
 ln -sn $cur_dir/fake_home/config/alacritty/ ~/.config/alacritty/
 
+echo "Install fzf"
+git clone --depth 1 https://github.com/junegunn/fzf.git ~/.fzf
+~/.fzf/install
+
 cd $cur_dir

@@ -73,6 +73,11 @@ let g:ycm_python_binary_path = 'python3'
 " Auto Black
 let g:black_linelength = 80
 
+" Install fzf
+Plugin 'junegunn/fzf', { 'do': { -> fzf#install() } }
+Plugin 'junegunn/fzf.vim'
+nnoremap <leader>f :Files<CR>
+
 
 " let vim_markdown_preview_github=1
 " let vim_markdown_preview_toggle=1
