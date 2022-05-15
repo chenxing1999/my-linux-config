@@ -198,3 +198,7 @@ augroup NetrwMapping
     autocmd filetype netrw nnoremap <buffer> <C-s> :call OpenBelow()<CR>
     autocmd filetype netrw nnoremap <buffer> <C-l> :wincmd l <CR>
 augroup END
+
+" Mapping caplock to esc in vim
+au VimEnter * silent! !xmodmap -e 'clear Lock' -e 'keycode 0x42 = Escape'
+au VimLeave * silent! !xmodmap -e 'clear Lock' -e 'keycode 0x42 = Caps_Lock'
