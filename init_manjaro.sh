@@ -6,7 +6,13 @@
 cur_dir="$(pwd)"
 echo "Install essential"
 sudo pacman -Syu
-sudo pacman -S ripgrep python3-venv i3-gaps
+
+# Tools to compile code
+sudo pacman -S base-devel cmake yay
+
+# Tools use in daily
+sudo pacman -S ripgrep python3-venv i3-gaps alacritty i3status
+sudo pacman -S brave
 
 python3 -m venv $HOME/.default_pyenv --prompt py310
 
@@ -33,6 +39,7 @@ echo "Create config folder"
 ln -sn $cur_dir/fake_home/config/i3/ ~/.config/i3/
 ln -sn $cur_dir/fake_home/config/alacritty/ ~/.config/alacritty/
 
+# Custom FZF compile better than re-built
 echo "Install fzf"
 git clone --depth 1 https://github.com/junegunn/fzf.git ~/.fzf
 ~/.fzf/install
