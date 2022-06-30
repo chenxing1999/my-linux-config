@@ -66,6 +66,11 @@ let g:ycm_semantic_triggers =  {
   \   'erlang' : [':'],
   \ }
 set completeopt-=preview
+set completeopt+=popup
+
+nnoremap gd :YcmCompleter GoToDefinition<CR>
+nnoremap do :YcmCompleter GetDoc<CR>
+
 let g:syntastic_java_checkers = []
 let g:EclimFileTypeValidate = 0
 let g:ycm_python_binary_path = 'python3'
@@ -140,6 +145,7 @@ set nobackup
 
 " colorscheme codedark
 set expandtab
+hi Pmenu ctermbg=darkgray
 
 
 """ COPY ZOOM IN FUNCTION FROM INTERNET """
