@@ -68,12 +68,14 @@ let g:ycm_semantic_triggers =  {
 set completeopt-=preview
 set completeopt+=popup
 
-nnoremap gd :YcmCompleter GoToDefinition<CR>
-nnoremap do :YcmCompleter GetDoc<CR>
+nnoremap ygd :YcmCompleter GoToDefinition<CR>
+nnoremap ydo :YcmCompleter GetDoc<CR>
 
 let g:syntastic_java_checkers = []
 let g:EclimFileTypeValidate = 0
 let g:ycm_python_binary_path = 'python3'
+let g:ycm_auto_hover = 'CursorHold'
+
 
 " Auto Black
 let g:black_linelength = 80
@@ -82,6 +84,7 @@ let g:black_linelength = 80
 Plugin 'junegunn/fzf', { 'do': { -> fzf#install() } }
 Plugin 'junegunn/fzf.vim'
 nnoremap <leader>f :Files<CR>
+nnoremap <leader>rg  :Rg<CR>
 
 
 " let vim_markdown_preview_github=1
